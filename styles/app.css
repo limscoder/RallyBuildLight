@@ -1,0 +1,23 @@
+.app {
+     /* Add app styles here */
+}
+
+.INCOMPLETE .x-panel-body {
+  background-color: #ffffff;
+}
+
+.ABORTED .x-panel-body {
+  background-color: grey;
+}
+
+.UNSTABLE .x-panel-body {
+  background-color: yellow;
+}
+
+.FAILURE .x-panel-body {
+  background-color: red;
+}
+
+.SUCCESS .x-panel-body {
+  background-color: #008000;
+}
