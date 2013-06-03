@@ -16,9 +16,18 @@ Ext.define('RallyBuildLight', {
 
     items: [{
         itemId: 'statusIndicator',
+        cls: 'status-indicator',
         border: false,
         bodyBorder: false
     }],
+
+    initComponent: function() {
+        this.callParent(arguments);
+
+        this.on('afterrender', function() {
+            this.mon(this.down('#statusIndicator').getEl(), 'click', this._onStatusIndicatorClick, this);
+        }, this, {single: true});
+    },
 
     launch: function() {
         this.setLoading(true);
@@ -120,6 +129,14 @@ Ext.define('RallyBuildLight', {
                 url: jobUrl,
                 apiUrl: this._getApiUrl(jobUrl)
             };
+        }, this);
+    },
+
+    _onStatusIndicatorClick: function() {
+        _.every(this.jobStatuses, function(jobStatus) {
+            if (jobStatus.data && jobStatus.data.result === this.currentStatus) {
+                window.open(jobStatus.url + '/lastCompletedBuild', '_blank');
+            }
         }, this);
     }
 });

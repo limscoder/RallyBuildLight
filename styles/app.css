@@ -2,22 +2,26 @@
      /* Add app styles here */
 }
 
-.INCOMPLETE .x-panel-body {
+.status-indicator {
+  cursor: pointer;
+}
+
+.status-indicator.INCOMPLETE .x-panel-body {
   background-color: #ffffff;
 }
 
-.ABORTED .x-panel-body {
+.status-indicator.ABORTED .x-panel-body {
   background-color: grey;
 }
 
-.UNSTABLE .x-panel-body {
+.status-indicator.UNSTABLE .x-panel-body {
   background-color: yellow;
 }
 
-.FAILURE .x-panel-body {
+.status-indicator.FAILURE .x-panel-body {
   background-color: red;
 }
 
-.SUCCESS .x-panel-body {
+.status-indicator.SUCCESS .x-panel-body {
   background-color: #008000;
 }
