@@ -24,6 +24,13 @@ Ext.define('RallyBuildLight', {
         SUCCESS: 'SUCCESS'
     },
 
+    config: {
+        defaultSettings: {
+            interval: 15,
+            jobUrl: 'http://jenkins.server/job/jobname'
+        }
+    },
+
     layout: 'fit',
 
     items: [{
@@ -51,12 +58,10 @@ Ext.define('RallyBuildLight', {
             xtype: 'rallynumberfield',
             name: 'interval',
             label: 'Refresh Interval (seconds)',
-            value: 15
         }, {
-            xtype: 'rallytextfield',
+            xtype: 'textarea',
             name: 'jobUrl',
             label: 'Jenkins Job URL',
-            value: 'http://jenkins.server/job/jobname',
             width: 400
         }];
     },
