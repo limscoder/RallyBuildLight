@@ -7,6 +7,18 @@ Ext.define('RallyBuildLight', {
     ],
     componentCls: 'app',
 
+    /*
+     * @private
+     * @property
+     * Classname to indicate the build light should blink.
+     */
+    blinkCls: 'blinkme',
+
+    /*
+     * @private
+     * @property
+     * Status name constants.
+     */
     statuses: {
         INCOMPLETE: 'INCOMPLETE',
         SUCCESS: 'SUCCESS'
@@ -95,8 +107,29 @@ Ext.define('RallyBuildLight', {
             statusIndicator.addCls(status);
             this.currentStatus = status;
             this.jobStatuses = jobStatuses;
+
+            if (this._isSuccessOrClaimed()) {
+                statusIndicator.removeCls(this.blinkCls);
+            } else {
+                statusIndicator.addCls(this.blinkCls);
+            }
+
             this.setLoading(false);
         }
+    },
+
+    _isSuccessOrClaimed: function() {
+        if (this.currentStatus !== this.statuses.SUCCESS) {
+            return _.some(this.jobStatuses, function(jobStatus) {
+                if (!jobStatus.data) {
+                    return false;
+                }
+
+                return jobStatus.data.result === this.statuses.SUCCESS || !jobStatus.data.description.match(/claim this build/);
+            }, this);
+        }
+
+        return true;
     },
 
     _getJobStatus: function(jobStatuses) {

@@ -6,6 +6,29 @@
   cursor: pointer;
 }
 
+@-webkit-keyframes blinker{
+  from { opacity: 1.0; }
+  to { opacity: 0.2; }
+}
+
+@keyframes blinker{
+  from { opacity: 1.0; }
+  to { opacity: 0.2; }
+}
+
+.status-indicator.blinkme .x-panel-body {
+  -webkit-animation-name: blinker;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-duration: 2s;
+  animation-name: blinker;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-duration: 2s;
+}
+
 .status-indicator.INCOMPLETE .x-panel-body {
   background-color: #ffffff;
 }
