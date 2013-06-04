@@ -9,7 +9,9 @@ Displays status of Jenkins builds.
 
 * Compile:
 
-```grunt```
+```
+grunt
+```
 
 * Copy and paste ```/deploy.html``` into Custom HTML app.
 
